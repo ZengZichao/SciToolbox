@@ -1,0 +1,5 @@
+[
+  {"taxon": "c__Bacilli", "total": 15234, "isGenome": false, "nDescChildren": 5},
+  {"taxon": "c__Clostridia", "total": 23456, "isGenome": false, "nDescChildren": 3},
+  {"taxon": "c__Negativicutes", "total": 1234, "isGenome": false, "nDescChildren": 2}
+]

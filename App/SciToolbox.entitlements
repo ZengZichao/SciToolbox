@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- App Sandbox：Mac App Store 强制要求 -->
+    <key>com.apple.security.app-sandbox</key>
+    <true/>
+    <!-- 出站网络：访问 15 个公开学术数据库 API -->
+    <key>com.apple.security.network.client</key>
+    <true/>
+    <!-- 用户通过 NSSavePanel 选择的文件可读写（导出 CSV/JSON/BibTeX 等） -->
+    <key>com.apple.security.files.user-selected.read-write</key>
+    <true/>
+</dict>
+</plist>

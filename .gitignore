@@ -1,0 +1,38 @@
+# Swift Package Manager build artifacts
+.build/
+.swiftpm/
+Packages/
+
+# macOS metadata
+.DS_Store
+
+# Xcode 用户级状态（注意：工程文件 SciToolbox.xcodeproj 本身必须入库，勿忽略）
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+
+# 归档与导出产物
+*.xcarchive
+*.pkg
+
+# Editor / OS
+*.swp
+*~
+
+# 构建输出（本地 .app、归档、导出包、DerivedData、Release CI 的 dist/）
+build/
+dist/
+
+# 截屏归一化产物（由 make-screenshots.sh 生成，不必入库）
+AppStoreScreenshots/
+
+# WorkBuddy internal project memory (not part of the software)
+.workbuddy/
+
+# 审查工具产物（不属源码）
+.mimosa/
+
+# 个人 App Store 上架操作日志：记录开发者账号内部状态（证书、账号会话、审核进度），
+# 不入库也不进历史。文件保留在本地当操作手册用。
+PUBLISHING-APPSTORE.md
+APPSTORE-METADATA.md

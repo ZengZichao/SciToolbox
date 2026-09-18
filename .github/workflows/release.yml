@@ -1,0 +1,63 @@
+name: Release
+
+# 发布时把 macOS .dmg 挂到对应的 GitHub Release 上。
+# 签名是 ad-hoc（build-app.sh 的默认行为），不需要任何证书或 secrets，
+# 因此可以在 GitHub 托管的 runner 上跑。代价是产物未经 Apple 公证，
+# 首次打开需要用户手动放行 —— Release 正文里已写明。
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  macos-dmg:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build .app
+        env:
+          SWIFT_BUILD_FLAGS: --arch arm64 --arch x86_64
+        run: ./build-app.sh
+
+      # build-app.sh 里的 MARKETING_VERSION 与 release tag 各写一处，忘同步就会
+      # 发布文件名与 Info.plist 不一致的二进制。
+      - name: Check app version matches tag
+        run: |
+          set -euo pipefail
+          APP_VERSION="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' build/SciToolbox.app/Contents/Info.plist)"
+          if [ "$APP_VERSION" != "${GITHUB_REF_NAME#v}" ]; then
+            echo "::error::tag ${GITHUB_REF_NAME} 与产物版本 ${APP_VERSION} 不一致，请同步 build-app.sh 的 MARKETING_VERSION"
+            exit 1
+          fi
+
+      - name: Package .dmg
+        run: |
+          set -euo pipefail
+          VERSION="${GITHUB_REF_NAME#v}"
+          DMG="SciToolbox-${VERSION}.dmg"
+          STAGING="$(mktemp -d)"
+
+          cp -R build/SciToolbox.app "$STAGING/"
+          ln -s /Applications "$STAGING/Applications"
+
+          hdiutil create -quiet \
+            -volname "SciToolbox ${VERSION}" \
+            -srcfolder "$STAGING" \
+            -ov -format UDZO "$DMG"
+          rm -rf "$STAGING"
+
+          hdiutil verify -quiet "$DMG"
+          mkdir -p dist
+          mv "$DMG" dist/
+          (cd dist && shasum -a 256 "$DMG" > "$DMG.sha256.txt")
+
+      - name: Upload to release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          gh release upload "$GITHUB_REF_NAME" dist/* --clobber

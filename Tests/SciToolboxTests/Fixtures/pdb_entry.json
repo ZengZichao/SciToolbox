@@ -1,0 +1,29 @@
+{
+  "entry": {"id": "1TSR"},
+  "struct": {
+    "title": "CRYSTAL STRUCTURE OF THE DNA-BINDING DOMAIN OF P53",
+    "pdbx_descriptor": "P53 CORE DOMAIN COMPLEXED WITH DNA"
+  },
+  "rcsb_entry_info": {
+    "experimental_method": "X-ray diffraction",
+    "resolution_combined": ["1.70"],
+    "molecular_weight": "23.50 kDa",
+    "entity_count": 3,
+    "deposited_polymer_monomer_count": 1,
+    "polymer_composition": "protein/DNA"
+  },
+  "rcsb_accession_info": {
+    "initial_release_date": "1995-01-26"
+  },
+  "exptl": [
+    {"method": "X-RAY DIFFRACTION"}
+  ],
+  "rcsb_primary_citation": {
+    "title": "Crystal structure of the DNA-binding domain of p53",
+    "journal_abbrev": "Nat. Struct. Biol.",
+    "year": "1995",
+    "rcsb_authors": ["Author A", "Author B"],
+    "rcsb_database_id_PubMed": "12345678",
+    "rcsb_database_id_DOI": "10.1038/nsb0395-123"
+  }
+}

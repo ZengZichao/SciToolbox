@@ -1,0 +1,39 @@
+{
+  "results": [
+    {
+      "primaryAccession": "P53_HUMAN",
+      "entryType": "UniProtKB reviewed (Swiss-Prot)",
+      "reviewed": true,
+      "proteinDescription": {
+        "recommendedName": {
+          "fullName": {"value": "Cellular tumor antigen p53"}
+        }
+      },
+      "genes": [
+        {"geneName": {"value": "TP53"}}
+      ],
+      "organism": {
+        "scientificName": "Homo sapiens",
+        "lineage": ["Eukaryota", "Metazoa", "Chordata", "Craniata", "Vertebrata", "Mammalia", "Primates", "Hominidae", "Homo"]
+      },
+      "sequence": {
+        "value": "MEEPQSDPSVEPPLSQETFSDLWKLLPENNVLSPLPSQAMDDLMLSPDDIEQWFTEDPGPDEAPRMPEAAPPVAPAPAAPTPAAPAPAPSWPLSSSVPSQKTYQGSYGFRLGFLHSGTAKSVTCTYSPALNKMFCQLAKTCPVQLWVDSTPPPGTRVRAMAIYKQSQHMTEVVRRCPHHERCSDSDGLAPQHLHAIGSQLSPNEPSSPSWQPLSSQPSWPTSLPSPSPTDPSSSSLTQPTASPPSPSPTSLPSPSPSPSPTDPSSSSLTQPTASPPSPSPTSLPSPSPSPSPTDPSSSSLTQPTASPPSPSPTSLPSPSPSPSPTDPSSSSLTQPTASPPSPSPTSLPSPSPS",
+        "length": 393
+      },
+      "dbReferences": [
+        {"type": "GO", "id": "GO:0005515", "properties": {"term": "GO:0005515 ! protein binding"}},
+        {"type": "PDB", "id": "1TSR"},
+        {"type": "Pfam", "id": "PF00870", "properties": {"entry name": "P53"}},
+        {"type": "PubMed", "id": "12345678"},
+        {"type": "Ensembl", "id": "ENSG00000141510"},
+        {"type": "AlphaFoldDB", "id": "P53_HUMAN"}
+      ],
+      "comments": [
+        {
+          "commentType": "FUNCTION",
+          "texts": [{"value": "Acts as a tumor suppressor in many tumor types; induces growth arrest or apoptosis depending on the physiological circumstances and cell type."}]
+        }
+      ]
+    }
+  ]
+}

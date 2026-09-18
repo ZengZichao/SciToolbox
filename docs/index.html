@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>支持 · SciToolbox</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  :root{
+    --accent:#1773B8;
+    --accent-soft:#E8F1F9;
+    --text:#1d1d1f;
+    --text-2:#5b5b60;
+    --text-3:#86868b;
+    --line:#e3e3e6;
+    --bg:#ffffff;
+    --bg-2:#f7f8fa;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  }
+  header{border-bottom:1px solid var(--line);background:var(--bg-2)}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+  header .wrap{padding-top:48px;padding-bottom:36px}
+  .brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+  .mark{width:36px;height:36px;flex:0 0 36px;border-radius:9px;display:block}
+  .brand-name{font-size:17px;font-weight:600;letter-spacing:-.01em}
+  h1{font-size:30px;line-height:1.25;font-weight:600;letter-spacing:-.02em;margin:0 0 10px}
+  .meta{font-size:14px;color:var(--text-3);margin:0}
+  main .wrap{padding-top:40px;padding-bottom:64px}
+  h2{font-size:20px;font-weight:600;letter-spacing:-.01em;margin:44px 0 14px}
+  h2:first-of-type{margin-top:8px}
+  h3{font-size:16px;font-weight:600;margin:0 0 8px}
+  p{margin:0 0 14px}
+  ul{margin:0 0 14px;padding-left:22px}
+  li{margin:6px 0}
+  .lede{font-size:19px;line-height:1.65;border-left:3px solid var(--accent);padding:2px 0 2px 18px;margin:0 0 32px}
+  .callout{background:var(--accent-soft);border-radius:10px;padding:18px 22px;margin:0 0 20px}
+  .callout p:last-child{margin-bottom:0}
+  .card{border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:0 0 14px}
+  .card p:last-child{margin-bottom:0}
+  code{
+    font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;font-size:14px;
+    background:var(--bg-2);border:1px solid var(--line);border-radius:5px;padding:1px 6px;
+  }
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:0 0 14px}
+  .stat{border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+  .stat .n{font-size:22px;font-weight:600;color:var(--accent);line-height:1.2}
+  .stat .l{font-size:14px;color:var(--text-2);margin-top:2px}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  footer{border-top:1px solid var(--line);background:var(--bg-2);font-size:14px;color:var(--text-3)}
+  footer .wrap{padding-top:28px;padding-bottom:28px}
+  footer p{margin:0 0 6px}
+  footer a{color:var(--text-2)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <img class="mark" src="appicon.png" width="36" height="36" alt="SciToolbox 应用图标">
+      <div class="brand-name">SciToolbox</div>
+    </div>
+    <h1>支持</h1>
+    <p class="meta">macOS 15.0 或更高版本　·　版本 1.0.0</p>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <p class="lede">SciToolbox 把 UniProt、PDB、AlphaFold、PubMed、NCBI、Ensembl、KEGG、GO、Pfam、BacDive、GBIF、Europe PMC、GTDB 等公开学术数据库聚合成一个界面，让你用一次检索同时覆盖多个库。</p>
+
+  <div class="grid">
+    <div class="stat"><div class="n">15</div><div class="l">个公开学术数据库</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">采集的个人数据</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">本机存储</div></div>
+  </div>
+
+  <h2>系统要求</h2>
+  <ul>
+    <li>macOS 15.0（Sequoia）或更高版本</li>
+    <li>需要联网才能检索（应用不含任何离线数据库副本）</li>
+    <li>支持 Apple 芯片与 Intel 处理器</li>
+  </ul>
+
+  <h2>常见问题</h2>
+
+  <div class="card">
+    <h3>检索没有结果，或者提示网络错误</h3>
+    <p>SciToolbox 不缓存数据库源数据，所有结果都来自公开接口的实时响应。因此请求失败通常有三个原因：网络不通、对应数据库暂时不可用、或者请求触发了该数据库的速率限制。</p>
+    <p>NCBI 系列接口（Taxonomy / Gene / PubMed）有较严格的访问频率限制，应用已内置最小 3 秒的请求间隔来规避，但在密集检索时仍可能偶发延迟。稍等片刻再试即可。</p>
+  </div>
+
+  <div class="card">
+    <h3>为什么有些数据库搜不到，只能按编号查？</h3>
+    <p>不同数据库提供的检索能力差异很大。部分库（如 PDB、Pfam）以编号检索为主，对自由文本关键词支持有限。应用会尽量做关键词到编号的转换，但无法突破上游接口本身的限制。</p>
+  </div>
+
+  <div class="card">
+    <h3>我的收藏和历史记录存在哪里？</h3>
+    <p>全部保存在你自己的 Mac 上，位于应用沙盒容器内。没有任何内容上传到服务器，详见 <a href="privacy.html">隐私政策</a>。你可以用「设置」里的数据管理功能清除，也可以直接删除应用来彻底移除全部数据。</p>
+  </div>
+
+  <div class="card">
+    <h3>从旧版本升级后，之前的收藏不见了</h3>
+    <p>上架版本开启了 macOS 应用沙盒，数据存储位置会迁移到沙盒容器内。开发版（自行编译）的数据位于容器外，沙盒应用无法读取，因此需要手工搬迁。如果你不需要旧数据，忽略即可，新版本会从零开始正常记录。</p>
+  </div>
+
+  <div class="card">
+    <h3>导出的文件格式有哪些？</h3>
+    <p>支持 CSV 与 JSON（整表导出），以及 BibTeX、RIS 与 FASTA（引用与序列导出）。导出时由系统保存对话框决定存放位置，应用只能写入你明确选定的那一个文件。</p>
+  </div>
+
+  <div class="card">
+    <h3>应用会收集我的检索内容吗？</h3>
+    <p>不会。检索词直接由你的 Mac 发往数据库服务器，不经过开发者，也无法与你的身份关联。应用内不含分析、广告或崩溃上报组件。</p>
+  </div>
+
+  <h2>反馈问题</h2>
+  <p>如果遇到上述未覆盖的问题，欢迎通过以下任一渠道反馈。提交时若能附上你的 macOS 版本、应用版本，以及触发问题的具体检索词，会更容易定位：</p>
+  <ul>
+    <li>邮箱：<a href="mailto:1073790321@qq.com">1073790321@qq.com</a></li>
+    <li>问题追踪：<a href="https://github.com/ZengZichao/SciToolbox/issues">GitHub Issues</a></li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>关于数据来源。</strong>SciToolbox 只是这些公开数据库的只读客户端，不拥有也不修改其中的数据。若某个条目的内容有误，请向对应数据库的维护方反馈。</p>
+  </div>
+
+  <h2>相关链接</h2>
+  <ul>
+    <li><a href="privacy.html">隐私政策</a></li>
+    <li><a href="https://github.com/ZengZichao/SciToolbox">源代码仓库（GPL-3.0）</a></li>
+  </ul>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>SciToolbox — 聚合公开学术数据库的 macOS 科研检索工具箱。</p>
+    <p><a href="privacy.html">隐私政策</a>　·　<a href="https://github.com/ZengZichao/SciToolbox">GitHub</a>　·　GPL-3.0</p>
+  </div>
+</footer>
+
+</body>
+</html>

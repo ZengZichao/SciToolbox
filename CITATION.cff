@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "SciToolbox"
+abstract: "A native SwiftUI macOS app that aggregates 15+ public academic databases into a single search interface."
+authors:
+  - family-names: Zeng
+    given-names: Zichao
+    # orcid: "https://orcid.org/0000-0000-0000-0000"  # 填上真实 ORCID 后取消注释
+version: 1.0.0
+license: GPL-3.0
+repository-code: "https://github.com/ZengZichao/SciToolbox"
+keywords:
+  - bioinformatics
+  - academic databases
+  - literature search
+  - macOS
+  - SwiftUI

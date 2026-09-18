@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Xcode 15+ 的新名称；旧版写 app-store -->
+    <key>method</key>
+    <string>app-store-connect</string>
+
+    <!-- 导出到本地目录（真要直接上传则改 upload） -->
+    <key>destination</key>
+    <string>export</string>
+
+    <key>signingStyle</key>
+    <string>automatic</string>
+
+    <key>teamID</key>
+    <string>D93V4997DT</string>
+
+    <key>uploadSymbols</key>
+    <true/>
+
+    <key>stripSwiftSymbols</key>
+    <true/>
+
+    <key>compileBitcode</key>
+    <false/>
+</dict>
+</plist>
