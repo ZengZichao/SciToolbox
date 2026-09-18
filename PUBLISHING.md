@@ -17,29 +17,52 @@ GitHub Pages 已启用（`main` / `/docs`），隐私政策与支持页已上线
 3. **~~申请 GitHub 仓库~~** ✅ 已完成：<https://github.com/ZengZichao/SciToolbox>（Public）。
 4. **（可选）Zenodo 归档拿 DOI**：在 zenodo.org 用 GitHub 一键归档，给当前 commit 打 `v1.0.0` tag 并 mint DOI；把 DOI 回填到 `CITATION.cff` 与 README 徽章。
 
+## 仓库结构：开发历史与公开仓库分开
+
+公开仓库 <https://github.com/ZengZichao/SciToolbox> **只有一个提交**，不含任何开发历史。
+本地对应两个目录：
+
+| 目录 | 作用 |
+|---|---|
+| `SciToolbox-项目代码/` | 完整开发历史，**只留在本地**。不要向公开仓库推送：两边历史无关联，会被判非快进而拒绝 |
+| `公开仓库/` | 公开仓库的唯一推送源，`origin` 指向 GitHub |
+
+日常开发在开发目录做；要公开时把变更同步进 `公开仓库/`（整目录覆盖即可，但注意
+`.gitignore` 里那四个永不入库的文件别跟过去），再在 `公开仓库/` 里提交、推送。
+
 ## 发版流程
 
-```bash
-git remote -v   # 应为 origin → https://github.com/ZengZichao/SciToolbox.git
-```
+以下都在 `公开仓库/` 目录里执行。
 
 1. **同步版本号**（四处，漏改会导致产物与 tag 不一致）：
    - `build-app.sh` 的 `MARKETING_VERSION`
    - `SciToolbox.xcodeproj` 的 `MARKETING_VERSION`
    - `CHANGELOG.md` 新增版本段落
    - `CITATION.cff` 的 `version`
-2. **打 tag 并推送**（tag 与 `build-app.sh` 不一致时 `release.yml` 会直接失败）：
+2. **提交并推送**：
    ```bash
-   git tag -a v<版本> -m "SciToolbox <版本>"
-   git push origin main --tags
+   git add -A && git commit -m "release: v<版本>" && git push origin main
    ```
-3. **建 Release**（正文可从 `CHANGELOG.md` 对应段落整理）：
+3. **建 Release**（正文从 `CHANGELOG.md` 对应段落整理，**此时先不要写校验和**）：
    ```bash
    gh release create v<版本> --title "SciToolbox <版本>" --notes-file <正文文件>
    ```
+   标签由 GitHub 服务端创建，不需要 `git push --tags`。若 Zenodo 归档要求**附注标签**，
+   改成先 `git tag -a v<版本> -m "SciToolbox <版本>" && git push origin v<版本>`，
+   再用 `gh release create v<版本>` 复用该标签。
+4. **等 `.dmg` 构建完成后回填校验和**：
+   ```bash
+   gh release download v<版本> --pattern '*.dmg' --clobber
+   shasum -a 256 SciToolbox-<版本>.dmg          # 把结果写进正文
+   gh release edit v<版本> --notes-file <正文文件>
+   ```
 
-`.dmg` 与 `.sha256.txt` 会由 `.github/workflows/release.yml` 在 Release 发布后自动构建并挂上，
-**不需要**手动上传；源码归档（`tar.gz` / `zip`）由 GitHub 从 tag 自动生成。
+`.dmg` 与 `.sha256.txt` 由 `.github/workflows/release.yml` 在 Release 发布后自动构建上传，
+**不需要**手动传；源码归档（`tar.gz` / `zip`）由 GitHub 从 tag 自动生成。
+
+> ⚠️ **校验和只能最后回填。** 任何一次移动 `v<版本>` 标签都会重新触发构建并覆盖 `.dmg`，
+> 产物字节随之改变，正文里预先写死的校验和立刻失效（本项目实际踩过：用户按说明执行
+> `shasum -c` 会失败）。回填完成后就不要再动这个标签。
 
 ## 给审稿人/用户的关键提示
 
